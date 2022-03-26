@@ -1,0 +1,689 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+<title>
+Your Sky: Virtual Telescope Control Panel
+</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<link rel="stylesheet" href="../yoursky.css" type="text/css" />
+</head>
+
+<body>
+
+<center>
+<img src="images/helplogo.jpg" width="128" height="128" align="left" alt="" />
+<h1>&nbsp;<br /><cite>Your Sky</cite> Help:<br /> Virtual Telescope Control Panel</h1>
+<br clear="left" />
+</center>
+
+<hr />
+
+<p>
+This document contains all the controls in the <cite>Your Sky</cite>
+Virtual Telescope control panel, with an explanation of the
+function of each.  The controls in this document are &ldquo;live&rdquo;&mdash;you're
+free to experiment with various settings, pressing the &ldquo;Update&rdquo; button
+at the top or bottom of the page to display a telescope display with
+the settings you've chosen.
+</p>
+
+<form method="post" name="request" action="/cgi-bin/Yourtel">
+
+<center>
+<input type="submit" value="Update" class="s" />
+</center>
+
+<h3><a name="DateTime" class="i">Date and Time</a></h3>
+
+<p>
+Three options are available for specifying the date and time.
+Choose an option by checking the box to the left and
+(for options other than &ldquo;Now&rdquo;) enter the date in the
+corresponding format in the text box to the right.
+</p>
+
+<blockquote>
+<label><input type="radio" class="i" name="date" onclick="0" checked="checked" value="0" /> <a name="Now" class="i">Now</a></label>
+
+<blockquote>
+<p>
+    &ldquo;Now&rdquo; displays a star map for the
+    <a href="#AimPoint">Aim Point</a> specified below at
+    the current moment.
+</p>
+</blockquote>
+
+<label><input type="radio" name="date" onclick="0" value="1" /> <a name="UTC" class="i">Universal time:</a></label>
+<input type="text" name="utc" onchange="document.request.date[1].checked=true;"
+       value="1775/4/19 05:00:00" size="20" />
+<blockquote>
+<p>
+  This option permits you to enter any Universal (also known as Greenwich Mean)
+  date and time in the format
+  <em>year</em>/<em>month</em>/<em>day</em>&nbsp;<em>hour</em>/<em>minute</em>/<em>second</em>.
+  You can omit the minutes and seconds of the time, or omit the
+  time entirely if you wish to specify 00:00 UTC.
+</p>
+
+<p>
+  You can enter dates as far back as Julian day 0, January 1, &minus;4712
+  and as far into the future as you wish.  Note that astronomers and
+  historians use different conventions for years before <span class="sc">A.D.</span> 1.  In
+  history books, the year that preceded <span class="sc">A.D.</span> 1 is called 1 <span class="sc">B.C.</span>, zero
+  not having come into use in European culture at the time.
+  Astronomers denote the year before <span class="sc">A.D.</span> 1 as &ldquo;year 0&rdquo;.  Thus when
+  an astronomer talks about an eclipse having occurred in the year
+  &minus;412, that's the year historians refer to as &ldquo;413 <span class="sc">B.C.</span>&rdquo;.  In
+  converting historical dates to Julian days, <cite>Your Sky</cite> assumes the
+  canonical date for the adoption of the Gregorian calendar, Friday,
+  October 15th, 1582.  Many countries shifted to the Gregorian
+  calendar much later; in Great Britain, not until 1752.  When
+  investigating events in history, make sure you express all dates
+  after October 15th, 1582 in the Gregorian calendar.
+</p>
+</blockquote>
+
+<label><input type="radio" name="date" onclick="0" value="2" /> <a name="Julian" class="i">Julian day:</a></label>
+<input type="text" name="jd" value="2450851.02963" size="20" onchange="document.request.date[2].checked=true;" />
+
+<blockquote>
+<p>
+    Astronomers often have to do arithmetic with dates and times.  The
+    Gregorian calendar is sufficiently eccentric that answering a
+    question like &ldquo;What is the date and time 295.03589 days (10 lunar
+    months) from now?&rdquo; is a nontrivial exercise.  To facilitate
+    computation, astronomers employ the <em>Julian day</em> calendar.
+    The Julian day number for a given moment in time is simply the
+    number of days, whole and fractional, elapsed since noon (12:00)
+    Universal time on 1st January &minus;4712; time is expressed as a
+    fraction of a day.  This system allows assigning a positive number
+    to the date and time of any observation in recorded history and
+    arbitrarily far into the future, and permits ordinary arithmetic
+    with dates and times without having to worry about <span class="sc">B.C.</span> and <span class="sc">A.D.</span>,
+    Julian and Gregorian calendars, leap years, and all that.  Of
+    course, you need to be able to convert back and forth between
+    Julian days and the civil calendar, but that's what computers are
+    for.
+</p>
+
+<p>
+    To show a star map for a given Julian day, simply check the box
+    and enter the Julian day number in the box to the right, including
+    a fraction where appropriate.  (Be sure to remember that Julian
+    days begin at noon&mdash;a Julian date representing midnight will end
+    in &ldquo;.5&rdquo;.) Click &ldquo;Update&rdquo; to show the map for the designated aim
+    point at that day.
+</p>
+</blockquote>
+</blockquote>
+
+          <h3><a name="AimPoint" class="i">Aim Point</a></h3>
+
+<p>
+The Aim Point fields specify the celestial coordinates at which the
+virtual telescope is aimed; that point will appear at the centre of
+the telescope display.  The scale of the display is set by the field
+of view, the inverse of magnification in a telescope.  Objects in the
+sky are assigned coordinates in a system based on the Earth's
+equatorial plane.  <em>Declination</em> is the celestial latitude of
+an object, and ranges from +90 for the point in the sky above the
+Earth's north pole to &minus;90 for the corresponding point above the south
+pole.  <em>Right Ascension</em> is the celestial equivalent of
+longitude.  Like terrestrial longitudes, which are measured from an
+arbitrary point (the Greenwich meridian), right ascensions are, by
+convention, measured from one of the two points at which the ecliptic
+(plane in which the Earth orbits the Sun) intersects the equatorial
+plane.  Due to the effects of <a href="precession.html">precession</a>
+this point moves slowly over the years, completing a full circle every
+25,800 years; it is presently located in the constellation of <a
+href="/cgi-bin/Yourtel?lat=0&amp;lon=0&amp;z=1">Pisces</a>.  While
+declination is, like latitude, given in degrees, right ascensions have
+traditionally been specified by <em>hour angle</em>, in which the
+equator is divided into twenty-four 15° segments.  Hour angles reduce
+the amount of calculation needed to determine the position of an
+object in the sky at a specific location on the Earth.  Now that
+computers have largely eliminated the need to calculate positions by
+hand, professional astronomers increasingly specify right ascensions
+in degrees instead of hour angles; the virtual telescope accepts
+either form of specification.
+</p>
+<blockquote>
+<label><a name="RightAscension" class="i">Right Ascension</a>:
+<input type="text" name="lon" value="3h 30m" size="15" /></label>
+</blockquote>
+
+<p>
+To point the telescope in a specific direction (using the &ldquo;setting
+circles&rdquo;, as it were), enter a right ascension and declination in the
+Aim Point boxes.  You can enter right ascension in degrees; hours
+and fractional hours; or hours, minutes, and seconds.  The following
+are all equivalent when entered in the Right ascension box:
+</p>
+
+<pre>
+        3h 30m
+        3.5h
+        52.5
+</pre>
+
+<blockquote>
+<label><a name="Declination" class="i">Declination</a>:
+<input type="text" name="lat" value="45° 15'" size="15" /></label>
+<label><input type="radio" name="ns" checked="checked" value="North" /> North</label>
+<label><input type="radio" name="ns" value="South" /> South</label>
+</blockquote>
+
+<p>
+Declination may be entered as degrees and a decimal fraction;
+degrees and minutes with a decimal fraction; or degrees, minutes, and
+seconds.  The following Declination settings are equivalent:
+</p>
+
+<pre>
+        45d 15m
+        45° 15'
+        45D 15' 0.00"
+        45.25
+</pre>
+
+<blockquote>
+<label><a name="FieldOfView" class="i">Field of view</a>:
+<input type="text" name="fov" value="45°" size="10" /></label>
+</blockquote>
+
+<p>
+The field of view gives the scale of the image&mdash;it will span
+the given number of degrees in declination and right
+ascension.  The default of 45° gives a large-scale view
+on the scale of a constellation.  By comparison,
+binoculars have fields of view on the order of 8 degrees,
+rich field telescopes about 3 degrees, and typical
+amateur telescopes about 1 degree.  Reducing
+the field of view is equivalent to increasing the
+magnification of a telescope.  Field of view is limited
+to 60°&mdash;beyond that, distortion of the image
+becomes unacceptable in a telescope-like map
+projection; for an all-sky map, visit the
+<cite>Your Sky</cite> <a href="../#Skymap">Sky Map</a> page.
+</p>
+
+<center>
+<a name="FindObject" href="../catalogues/catalogues.html"><b>Find object in catalogue</b></a>
+</center>
+
+<p>
+You can point the virtual telescope at a specific object in the sky by
+clicking its name in one of the <a href="../catalogues/catalogues.html">object
+catalogues</a> which accompany <cite>Your Sky</cite>; the selected object
+will be centred in the virtual telescope display and its coordinates
+will appear in the aim point boxes.
+</p>
+
+            <h3><a name="Options" class="i">Display Options</a></h3>
+
+<label><input type="checkbox" checked="checked" name="coords" /> <a name="Coords" class="i">Ecliptic and equator</a></label>
+
+<blockquote>
+<img src="images/ctlcoords.png" width="296" height="234" class="r" vspace="5" alt="" />
+<p>
+    This box controls whether the celestial coordinate system appears
+    in the map.  When checked, the pole is marked with a small light
+    blue cross with arms pointing toward the 0, 6, 12, and 18 hour
+    marks on the equator, the celestial equator is drawn in light
+    blue, labeled at each hour of right ascension, and the ecliptic is
+    drawn in red with labels every 15° of ecliptical longitude.
+</p>
+
+<p>
+    The celestial poles are the points in the sky at the zenith
+    above the Earth's poles; the celestial equator is the projection
+    of the Earth's equator onto the sky, and the ecliptic is the
+    plane in which the Earth orbits the Sun.  The obliquity of
+    the ecliptic changes slowly through time as the Earth's
+    inclination varies, and the points at which the ecliptic crosses the equator
+    (the equinoxes) also shift over time due to
+    <a href="precession.html">precession</a>.
+<br clear="right" />
+</p>
+</blockquote>
+
+<br />
+<label><input type="checkbox" checked="checked" name="moonp" /> <a name="Planets" class="i">Moon and planets</a></label>
+<blockquote>
+<img src="images/ctltplanet.png" width="163" height="127" class="r" vspace="5" alt="" />
+<p>
+    If this box is checked, the Moon and planets will be included
+    in the map at their correct positions for the given time and date.
+    The Moon icon will show the Moon with the correct phase, with
+    the lunar north pole at the top of the icon.  A table of
+    <a href="icons.html">planet names and icons</a> is
+    given in an accompanying document.
+</p>
+
+<p>
+    The technique used to calculate the positions of the planets
+    from Mercury through Neptune is
+    valid only for dates less than <span class="sc">A.D.</span> 8000; if you specify a date further into
+    the future, the Moon and planets are not plotted on the map and no
+    <a href="ephemeris.html">ephemeris</a> is shown.  Pluto has been
+    observed over an insufficient arc of its orbit to allow
+    accurate computation of its position outside the range of
+    years from 1885 through 2099; Pluto is not plotted for dates
+    outside this interval.
+<br clear="right" />
+</p>
+</blockquote>
+
+<br />
+<label><input type="checkbox" checked="checked" name="deep" /> <a name="DeepSky" class="i">Deep sky objects of magnitude</a></label>
+ <input type="text" name="deepm" value="2.5" size="3" /> and brighter
+<blockquote>
+<img src="images/ctldeep.png" width="281" height="220" class="r" vspace="5" alt="" />
+<p>
+    Checking this box causes deep sky objects (galaxies, star clusters,
+    gaseous nebulæ, etc.) brighter (in integrated visual intensity) than
+    the given magnitude to be plotted in the star map, using
+    <a href="icons.html#DeepSky">icons</a> to distinguish the
+    different types of objects.
+</p>
+
+<p>
+    Here we've made a finder chart to locate M31, the great spiral
+    galaxy in Andromeda, labeling brighter stars with their Bayer
+    and Flamsteed designations.
+<br clear="right" />
+</p>
+</blockquote>
+
+<br />
+<a name="Constellations" class="i">Constellations:</a>
+<blockquote>
+<p>
+    The human visual system, inherited from hundreds of millions of
+    years of mammalian evolution, excels in finding patterns.  Spotting
+    the fearful symmetry of a tiger lurking in the bush quickly enough
+    to run away means you're likely to have more children than
+    folks who lack that talent, so we've all inherited the genes of those
+    with the high-end pattern matching meatware.  As a result,
+    we see patterns <em>everywhere</em>, even where no pattern
+    is really there.  What child, or adult on a lazy day, hasn't
+    gazed at the clouds boiling up on a hot summer afternoon
+    and seen, in the sky, the fantasy images which inhabit our
+    dreams?
+</p>
+<p>
+    We see patterns in the night sky as well.  Every civilisation
+    has grouped the stars into constellations representing
+    key aspects of their culture.  The constellations in the
+    northern hemisphere sky recognised by Western cultures
+    are largely inherited from classical Greece&mdash;they are the
+    goddesses and gods of Olympus and the heroes of Greek
+    mythology.
+</p>
+
+<p>
+<img src="images/ctlconst.png" width="173" height="179" class="r" vspace="5" alt="" />
+    Constellations in the southern hemisphere were named innumerable
+    times by the multitude of cultures who observed them since
+    antiquity.  European culture was, however, unaware of most
+    of the southern sky prior to the Enlightenment and the
+    ensuing age of exploration, so many southern constellations were named for
+    contemporary wonders such as the microscope (<em>Microscopium</em>),
+    air pump (<em>Antila</em>), and clock (<em>Horologium</em>).
+</p>
+
+<p>
+    Perhaps if our cultural baggage had been lost at the
+    generation-port, we'd look at the stars and see in
+    them the Five Original Marx Brothers, Lucy in the Sky,
+    and Bart's Skateboard.  <cite>Your Sky</cite> serves up the traditional
+    constellations, offering the following options.
+<br clear="left" />
+</p>
+</blockquote>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<label><input type="checkbox" checked="checked" name="consto" />
+<a name="ConstO" class="i">Outlines</a></label>
+<blockquote>
+<p>
+    If checked, outlines connecting the stars of constellations
+    will be drawn as grey lines.
+</p>
+</blockquote>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<label><input type="checkbox" checked="checked" name="constn" />
+<a name="ConstN" class="i">Names</a></label>
+<blockquote>
+<p>
+    If checked, each constellation's name is shown
+    in yellow, centred on the midpoint of the constellation.
+</p>
+</blockquote>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<label><input type="checkbox" name="consts" /> abbreviate?</label>
+<blockquote>
+<p>
+    If checked, the
+    <a href="http://www.skyandtelescope.com/howto/Constellation_Names.html">three letter abbreviation</a>
+    will be shown instead of the constellation's full name.
+</p>
+</blockquote>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<label><input type="checkbox" checked="checked" name="constb" />
+<a name="ConstB" class="i">Boundaries</a></label>
+<blockquote>
+<p>
+    If checked, the boundaries between adjacent constellations are drawn
+    in green.
+</p>
+
+<p>
+    The constellation boundaries we use today were adopted in 1930 by
+    the <a href="http://www.intastun.org/">International Astronomical Union</a>,
+    based on a partial set of
+    boundaries compiled in 1877 by B. A. Gould.  Gould's original boundaries
+<!-- Gould, B.A., 1877, Uranometria Argentina, mapas (Buenos Aires, Argentina: Observatorio Nacional) -->
+    star maps but, for simplicity, ran purely east-west and
+    north-south in the celestial sphere.  But as the Earth's axis
+    <a href="precession.html">precesses</a>
+    with regard to the distant stars, completing a full
+    circle every 25,800 years, equatorial coordinates change with
+    regard to the fixed stars, so the original boundaries, defined
+    in 1877, no longer run parallel to lines of
+    longitude and latitude today.  (Precession may seem like
+    a minor effect, significant only in the very long term, but it can
+    creep up on you.  In the century and a quarter since 1877,
+    precession has moved Polaris three quarters of a degree closer to
+    the north celestial pole&mdash;that's one and a half
+    <a href="/earthview/moon_ap_per.html">diameters of the full Moon</a>!)
+</p>
+
+<p>
+    Consequently, it's necessary to adjust the constellation
+    boundaries to account for precession.  The boundaries used by
+    <cite>Your Sky</cite> have been precessed in a simple fashion to the
+    J2000.0 epoch.  Approximating the precise 1875 boundaries based on
+    the best available published data would require plotting more than
+    13,000 vectors and didn't seem worth it, especially since you
+    could hardly see the difference on an all-sky map.
+</p>
+</blockquote>
+
+<br />
+<a name="Stars" class="i">Stars:</a>
+<blockquote>
+<p>
+    The following controls permit choosing how many stars
+    will appear in the map and select the annotation which
+    accompanies them.  Each includes a <em>limiting magnitude</em>
+    field.  The brightness of a star is given by its
+    <em>magnitude</em>, with a larger numerical magnitude indicating
+    a dimmer star.  The brightest star (excluding the Sun) is
+    Sirius, with a magnitude of &minus;1.46.  There are about 20 stars
+    brighter (having a magnitude less than) 1.5, and about 100
+    stars brighter than magnitude 2.6.  The number of stars increases
+    rapidly with the magnitude&mdash;there are about a thousand stars
+    brighter than magnitude 4.5, and if you use magnitude 5.5 as
+    the limit for naked eye visibility, you include about 3000
+    stars.  <cite>Your Sky</cite>'s virtual telescope
+    uses the <a href="http://cfa-www.harvard.edu/sao-home.html">Smithsonian Astrophysical
+    Observatory</a> (SAO) Star Catalog
+    of more than 258,000 stars with a limiting magnitude of
+    approximately 9.5.
+</p>
+</blockquote>
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<label><a name="StarMag" class="i">Show stars brighter than magnitude</a>
+<input type="text" name="limag" value="5.5" size="3" /></label>
+<blockquote>
+<p>
+    Only stars brighter than specified by this box will be
+    included in the map.  Stars are shown as icons; the larger
+    the icon, the brighter the star; due to resolution limits
+    of computer monitors (and convention in many printed star
+    atlases), stars are &ldquo;binned&rdquo; into units of one full magnitude.
+</p>
+
+<p>
+<img src="images/ctlstars.png" width="242" height="218" class="r" vspace="5" alt="" />
+    The following controls select the annotation which
+    accompanies plotted star icons.
+    Note that the annotation settings in the items which follow apply
+    only to stars which are plotted; regardless of the limiting
+    magnitude for an annotation, it will never appear unless
+    the star it applies to is brighter than the cutoff for
+    the map given above.
+</p>
+
+<p>
+    Many bright stars are <a href="../catalogues/starname.html">named</a>,
+    for example &ldquo;Polaris&rdquo;, &ldquo;Altair&rdquo;, and
+    &ldquo;Zubenelgenubi&rdquo;, and principal stars of constellations are
+    designated by Greek letters often called &ldquo;Bayer letters&rdquo; after
+    Johann Bayer who first identified stars this way in his
+    <cite>Uranometria</cite> of 1603.  Multiple stars may bear the same
+    letter and be distinguished by a numeric subscript.  Stars are
+    also identified by &ldquo;Flamsteed numbers&rdquo;, which simply number the
+    stars within a constellation in order of right ascension.
+    Stars in southern constellations are frequently identified by
+    Roman letters.
+
+<br clear="right" />
+</p>
+</blockquote>
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<label><input type="checkbox" checked="checked" name="starn" />
+ <a name="StarName" class="i">Names for magnitude</a></label>
+ <input type="text" name="starnm" value="2.0" size="3" /> and brighter
+<blockquote>
+<p>
+    If this box is checked, <a href="../catalogues/starname.html">named stars</a>
+    brighter than the given
+    magnitude will show the name to the right of the star icon in
+    the map.  If you set the magnitude too high, the map may become
+    cluttered with names and difficult to read.
+</p>
+</blockquote>
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<label><input type="checkbox" checked="checked" name="starb" />
+ <a name="StarBFlam" class="i">Bayer/Flamsteed codes</a> for mag.</label>
+ <input type="text" name="starbm" value="2.5" size="3" /> and brighter
+
+<blockquote>
+<p>
+    Checking this box causes the Bayer, Flamsteed, or letter
+    designation to be shown for stars brighter than the given
+    magnitude, plotted to the right of the star unless its name
+    is also shown, in which case the code appears to its left.
+</p>
+</blockquote>
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<label><input type="checkbox" name="showm" />
+ <a name="StarShowM" class="i">Show magnitudes</a> between</label>
+ <input type="text" name="showmb" value="-1.5" size="5" /> and
+ <input type="text" name="showmd" value="6.0" size="5" />
+
+<blockquote>
+<p>
+You can display magnitudes of stars in a given range by checking
+the &ldquo;Show magnitudes&rdquo; box and entering the maximum and minimum
+magnitude of stars to be so labeled.  Magnitudes are shown beneath the
+stars, to one decimal place with the decimal point omitted, as is the
+convention for star charts (decimal points being too easily confused
+with stars).  Labeling stars with magnitudes is handy, for example,
+when you're observing a variable star and wish to identify comparison
+stars within the field that cover the range of the variable.
+</p>
+</blockquote>
+
+<label><input type="checkbox" name="flip" /> <a name="Invert" class="i">Invert North and South</a></label>
+
+<blockquote>
+<p>
+    The virtual telescope usually draws star maps
+    with North up.  If the above box is checked, the map is inverted
+    so South is up.  If your telescope inverts the image,
+    or you live in the southern hemisphere and use a non-inverting telescope,
+    maps plotted with South up may be easier to use at the
+    telescope.
+</p>
+</blockquote>
+
+<br /><label><a name="Imgsize" class="i">Image size</a>: <input type="text" name="imgsize" value="512" size="6" /></label> pixels
+<blockquote>
+<p>
+This field specifies the size, in pixels, of the star map to be
+generated.  Map size is restricted to the range of 100 to 1024
+pixels; smaller maps would be useless, and larger maps take
+too long to generate and download.
+</p>
+</blockquote>
+
+<br /><label><a name="Fontscale" class="i">Font scale</a>: <input type="text" name="fontscale" value="1.0" size="4" /></label>
+<blockquote>
+<p>
+The text used to label the chart will be scaled by the specified
+factor, with 1.0 the default.  Scale factors less than one reduce the size
+of the text while those greater than one enlarge it compared to the
+default size.
+</p>
+</blockquote>
+
+<br /><a name="Scheme" class="i">Colour scheme</a>: <select name="scheme" size="1">
+<option value="0" selected="selected">Colour</option>
+<option value="1">Black on white background</option>
+<option value="2">White on black background</option>
+<option value="3">Night vision (red)</option>
+</select>
+
+<blockquote>
+<p>
+    You can select one the following colour schemes for the star map.
+    Samples of each colour scheme are given below, along with a discussion
+    of the applications to which it is suited.
+</p>
+
+    <img src="images/ctltcolour.png" class="l" width="208" height="174" alt="" />
+    <h4 class="s">Colour</h4>
+<p>
+    The default full colour scheme is easiest to view on computer
+    monitors which support 256 (or more) colours.  Colour coding
+    coordinates, constellation boundaries and outlines, annotation,
+    and planet icons makes it easier to distinguish the various
+    objects, especially when the map is crowded with many different
+    items.
+    <br clear="left" />
+</p>
+
+    <img src="images/ctltbw.png" class="l" width="208" height="174" alt="" />
+    <h4 class="s">Black on white background</h4>
+<p>
+    This is the traditional choice for printed star atlases.
+    If you're planning to print the chart on a black and white
+    printer, this is usually the best choice.  The white background
+    allows you to write on the map, and keeps the background from
+    using up lots of ink or toner in your printer.
+    <br clear="left" />
+</p>
+
+    <img src="images/ctltwb.png" class="l" width="208" height="174" alt="" />
+    <h4 class="s">White on black background</h4>
+<p>
+    Many astronomers find charts with white stars and text on a
+    black background easier to read with the dim red flashlights
+    they use at the telescope to preserve night vision.  The virtual telescope
+    will produce charts in this form, but if you're planning
+    to print the resulting charts, ponder the
+    consequences for your printer.  All of that black has to come
+    from somewhere, and that somewhere is generally your printer's
+    ink or toner cartridge.  Making lots of white on black maps
+    can use up cartridges at a prodigious rate compared to
+    printing normal text.  Also, mostly black documents
+    cause problems with some printers; laser printers may
+    print a &ldquo;shadow&rdquo; on subsequent pages due to excess toner
+    adhering to the imaging surface, and inkjet printers sometimes
+    splatter ink around when feeding the large amount needed for
+    extended regions of black.  Your printer may be immune from
+    these foibles, but if it isn't, don't say I didn't warn you.
+    <br clear="left" />
+</p>
+
+    <table bgcolor="#000000" cellpadding="4">
+    <tr valign="top">
+    <td>
+        <img src="images/ctltnv.png" width="208" height="174" alt="" />
+    </td>
+
+    <td>
+    <h4 class="s"><font color="#FF0000">Night vision (red)</font></h4>
+    <p style="margin-right: 8px; margin-left: 8px;">
+    <font color="#FF0000">
+    If you're taking your laptop computer into the field to use
+    at the telescope, this option may be just the ticket.  All
+    items on the map are displayed in red, which doesn't tend
+    to degrade night vision.  When using this option, use the
+    display brightness control to reduce the intensity to the
+    minimum level at which you can still easily read the map.
+    Where possible, other material in the map document is
+    displayed red on black, like this paragraph.
+    </font>
+    </p>
+    </td></tr>
+    </table>
+</blockquote>
+
+    <h3><a name="Tracking" class="i">Asteroid</a> and Comet Tracking</h3>
+<p>
+    Given the orbital elements for an asteroid (minor planet) or
+    comet, <cite>Your Sky</cite>'s virtual telescope can calculate the
+    position of that object in the sky for any time within the epoch
+    of validity of the elements and display it in the correct location
+    in the sky.  Specifying orbital elements is an advanced topic
+    which is discussed in detail in a separate
+    <a href="elements.html"><cite>Asteroid and Comet Tracking</cite></a>
+    document.
+</p>
+
+<p />
+<center>
+Paste <a href="elements.html">orbital elements</a> below:
+  <label><input type="checkbox" name="edump" value="-xe" /> Echo elements</label>
+<br />
+<textarea class="elements" name="elements" rows="3" cols="70">
+</textarea>
+</center>
+
+<p />
+
+<center>
+<input type="submit" value="Update" class="s" />
+</center>
+
+</form>
+
+<p />
+
+<a href="../#Telescope"><b>Back to <cite>Virtual Telescope</cite></b></a>
+&nbsp;&nbsp;<a href="../"><b>Up to <cite>Your Sky</cite></b></a>
+&nbsp;&nbsp;<a href="help.html"><b>Other Help</b></a>
+
+<hr />
+
+<table class="footer">
+<tr>
+<td class="left">
+by <a href="/">John Walker</a>
+</td>
+<td class="right">
+    <table class="buttons">
+    <tr><td>
+	<a class="i" href="http://validator.w3.org/check?uri=http://www.fourmilab.ch/yoursky/help/telcontrols.html"
+	   target="FourmilabValidation"><img
+	   class="button"
+	   src="/images/icons/valid-xhtml10.png"
+	   alt="Valid XHTML 1.0" height="31" width="88" /></a>
+    </td></tr>
+    </table>
+</td>
+</tr>
+</table>
+
+</body>
+</html>

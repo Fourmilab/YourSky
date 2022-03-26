@@ -1,0 +1,52 @@
+
+    /* Style for asteroid and comet catalogues.  These
+       definitions are used in addition to those in
+       objcat.css. */
+
+    h1, h2 {
+        text-align: center;
+    }
+
+    img.button {
+        border: 0px;
+        vertical-align: middle;
+    }
+
+    table.e {
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    table.e td {
+        text-align: right;
+    }
+
+    table.e td.n, th.n {
+        text-align: left;
+    }
+
+    table.right {
+        float: right;
+    }
+
+    td.c {
+        text-align: center;
+    }
+
+    th.r {
+        text-align: right;
+    }
+
+    th.s {
+        width: 50%;
+    }
+
+    table.e th {
+        vertical-align: bottom;
+    }
+
+    table.e td.h {
+        background-color: #C0C0FF;
+        font-size: 300%;
+        text-align: center;
+    }

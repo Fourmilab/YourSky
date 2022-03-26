@@ -1,0 +1,59 @@
+#! /bin/sh
+
+WEBDIR=../../webtree/catalogues/
+
+#   Download the latest dastcom5 database from JPL
+
+#rm -rf download
+#mkdir download
+#cd download
+#wget ftp://ssd.jpl.nasa.gov/pub/xfr/dastcom5.zip
+#cd ..
+
+#   Extract the dastcom5 archive into the extract directory
+
+rm -rf extract
+mkdir extract
+cd extract
+unzip ../download/dastcom5.zip
+cd ..
+
+#   Translate the asteroid database into the legacy format
+
+rm -rf legacy
+mkdir legacy
+cd extract/dastcom5/dat
+../../../Translate_JPL/trans_ast >../../../legacy/JPL_ELEMENTS.NUMBR
+cd ../../..
+
+#   Generate the HTML for the asteroid database
+
+rm -rf html
+mkdir html
+cd html
+perl ../GenHTML/Yoursky_elements_pastnum.pl ../legacy/JPL_ELEMENTS.NUMBR
+perl ../GenHTML/Yoursky_elements_pastname.pl ../legacy/JPL_ELEMENTS.NUMBR
+cd ..
+
+#   Download the comets database in ASCII form
+
+cd legacy
+wget https://ssd.jpl.nasa.gov/dat/ELEMENTS.COMET
+cd ..
+
+#   Generate the HTML for the comet database
+
+cd html
+perl ../GenHTML/Yoursky_elements_pcomets.pl ../legacy/ELEMENTS.COMET >periodic_comets.html
+cd ..
+
+#   Install the newly-generated HTML files in the production directory
+
+cd html
+mv periodic_comets.html asteroid_name*.html asteroid_number*html $WEBDIR
+cd ..
+
+#rm -rf download
+#rm -rf extract
+#rm -rf legacy
+#rm -rf html

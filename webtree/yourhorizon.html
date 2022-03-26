@@ -1,0 +1,183 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+<title>Your Sky: Horizon Views</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<link rel="stylesheet" href="yoursky.css" type="text/css" />
+<link rel="stylesheet" href="controls.css" type="text/css" />
+<meta name="robots" content="noindex" />
+<script src="/documents/scripts/externalLinks.js"
+    type="text/javascript">
+</script>
+<script src="/cgi-bin/Where"
+    type="text/javascript">
+</script>
+<script type="text/javascript">
+//<![CDATA[
+    /*  If we were able to obtain geolocation information from
+        the requester's IP address, plug the latitude and
+        longitude into the Observing Site fields of the Horizon
+        Views request form, taking care to set the radio button
+        according to the sign of the co-ordinates.
+
+        Sign conventions for co-ordinates:
+            Latitude    + North     - South
+            Longitude   + East      - West
+    */
+    function plugLocation() {
+        if (geoLocation && geoLocation.status) {
+            document.getElementById("horlat").value =
+                Math.abs(geoLocation.latitude) + "\xB0";
+            document.getElementById(geoLocation.latitude > 0 ?
+                "hornsn" : "hornss").checked = true;
+            document.getElementById("horlon").value =
+                Math.abs(geoLocation.longitude) + "\xB0";
+            document.getElementById(geoLocation.longitude > 0 ?
+                "horewe" : "horeww").checked = true;
+        }
+    }
+//]]>
+</script>
+</head>
+
+<body onload="externalLinks(); plugLocation();">
+<h1 class="c">
+<img src="help/images/ystitlew.png" width="480" height="133" alt="Your Sky" />
+<br />
+Horizon Views
+</h1>
+
+<hr />
+
+<p>
+Welcome to <cite>Horizon Views</cite>, showing the stars above the
+horizon at any orientation.
+<a href="help/horcontrols.html">Controls</a> allow you to set time and date,
+viewing direction, orbital elements to track an asteroid or
+comet, and a variety of other parameters.  Click on the title of any
+control to display a help page explaining it, or go directly to the
+help <a href="help/help.html">table of contents</a>.  You can compose
+a request with <a href="horcustom.html">custom settings</a> and save the
+results in your browser's hotlist or bookmark table, allowing direct
+access to <cite>Your Sky</cite>'s virtual telescope
+with all the controls preset to your own
+preferences.
+</p>
+
+<p>
+To get started, enter the latitude and longitude of your observing
+site in the boxes below (be sure to check the correct
+&ldquo;North/South&rdquo; and &ldquo;East/West&rdquo; settings),
+select the direction in which you wish to view, and press the
+&ldquo;Update&rdquo; button below the form.  <cite>Your Sky</cite> will
+deliver a map showing the view toward the horizon in the given
+direction at the present time.  On that reply page you can enter
+different dates and times, observing locations, viewing directions,
+display options, and orbital elements of asteroids and comets you wish
+to track.  If you don't know your latitude and longitude, you can
+specify them by selecting a <a href="cities.html">nearby city</a>,
+then navigate to the Horizon View from the resulting Sky Map page.
+</p>
+
+<form method="post" action="/cgi-bin/Yourhorizon">
+
+<table class="controls">
+
+<tr>
+<th>
+          <a href="help/horcontrols.html#Site">Observing Site</a></th>
+<td>
+    <table class="where">
+    <tr>
+    <td>
+    <label for="horlat">Latitude:</label></td>
+    <td>
+    <input type="hidden" name="z" value="2" />
+    <input type="text" name="lat" id="horlat" value="47°" size="10" /></td>
+    <td>
+    <label><input type="radio" id="hornsn" name="ns" checked="checked" value="North" /> North</label>
+    <label><input type="radio" id="hornss" name="ns" value="South" /> South</label>
+    </td>
+    </tr>
+
+    <tr>
+    <td>
+    <label for="horlon">Longitude:</label></td>
+    <td>
+    <input type="text" name="lon" id="horlon" value="7°" size="10" /></td>
+    <td>
+    <label><input type="radio" id="horewe" name="ew" checked="checked" value="East" /> East</label>
+    <label><input type="radio" id="horeww" name="ew" value="West" /> West</label>
+    </td>
+    </tr>
+
+    <tr>
+    <td colspan="3" class="catalogue">
+    <a href="cities.html"><b>Set for nearby city</b></a></td>
+    </tr>
+
+    </table>
+</td></tr>
+
+<tr>
+<th class="vpoint">
+<a href="help/horcontrols.html#ViewPoint">Viewpoint</a>
+</th>
+<td>
+    <table class="where">
+    <tr>
+    <td>
+    <a href="help/horcontrols.html#Azimuth">Azimuth</a>:
+    <select name="azimuth" size="1"
+            onchange="if (form.azimuth.selectedIndex != 0) { form.azideg.value = (45 * (form.azimuth.selectedIndex - 1)); }">
+    <option value="V">Degrees:</option>
+    <option value="0" selected="selected">North</option>
+    <option value="45">Northeast</option>
+    <option value="90">East</option>
+    <option value="135">Southeast</option>
+    <option value="180">South</option>
+    <option value="225">Southwest</option>
+    <option value="270">West</option>
+    <option value="315">Northwest</option>
+    </select>
+    <input type="text" name="azideg" value="0° (N)" size="15"
+           onchange="form.azimuth.selectedIndex = 0;" />
+    </td></tr>
+    </table>
+</td></tr>
+
+</table>
+
+<p class="c">
+<input type="submit" value="Make Horizon View" />
+</p>
+
+</form>
+
+<h3 class="nav"><a href="help/help.html"><cite>Your Sky</cite> help</a></h3>
+<h3 class="nav"><a href="./">Up to <cite>Your Sky</cite></a></h3>
+
+<hr />
+
+<table class="footer">
+<tr>
+<td class="left">
+by <a href="/">John Walker</a>
+</td>
+<td class="right">
+    <table class="buttons">
+    <tr><td>
+        <a class="i" href="http://validator.w3.org/check?uri=http://www.fourmilab.ch/yoursky/yourhorizon.html"
+           rel="Target:FourmilabValidation"><img
+           class="button"
+           src="/images/icons/valid-xhtml10.png"
+           alt="Valid XHTML 1.0" height="31" width="88" /></a>
+    </td></tr>
+    </table>
+</td>
+</tr>
+</table>
+
+</body>
+</html>

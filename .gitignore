@@ -1,0 +1,27 @@
+#   Directories in which Cron job rebuilds asteroid and comet catalogues
+cron/download
+cron/extract
+cron/legacy
+cron/html
+
+#   Relocatables and executables for Translate_JPL
+cron/Translate_JPL/*.o
+cron/Translate_JPL/trans_ast
+cron/Translate_JPL/trans_comet
+
+#   Relocatables and executables for CGI programs
+#       astro.a library
+src/astro/*.o 
+src/astro/astro.a
+#       yoursky program
+src/sky/*.o
+src/sky/yoursky
+#       yourizon and yourtel program
+telescope/*.o
+telescope/yourizon
+telescope/yourtel
+
+#   Web tree
+#       Asteroid and comet elements downloaded from JPL by Cron job
+webtree/catalogues/asteroid_names[1-9]*.html
+webtree/catalogues/asteroid_numbers[1-9]*.html

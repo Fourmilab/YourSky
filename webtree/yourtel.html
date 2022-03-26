@@ -1,0 +1,105 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<title>Your Sky: Virtual Telescope</title>
+<link rel="stylesheet" href="yoursky.css" type="text/css" />
+<link rel="stylesheet" href="controls.css" type="text/css" />
+<meta name="robots" content="noindex" />
+<script src="/documents/scripts/externalLinks.js"
+    type="text/javascript">
+</script>
+</head>
+
+<body onload="externalLinks();">
+<h1 class="c">
+<img src="help/images/ystitlew.png" width="480" height="133" alt="Your Sky" />
+<br />
+The Virtual Telescope
+</h1>
+
+<hr />
+
+<p>
+Welcome to <cite>Your Telescope</cite>, your Humble Space Telescope of the Web.
+<a href="help/telcontrols.html">Controls</a> allow you to set time and date,
+aiming point, orbital elements to track an asteroid or
+comet, and a variety of other parameters.  Click on the title of any
+control to display a help page explaining it, or go directly to the
+help <a href="help/help.html">table of contents</a>.  You can compose
+a request with <a href="telcustom.html">custom settings</a> and save the
+results in your browser's hotlist or bookmark table, allowing direct
+access to <cite>Your Sky</cite>'s virtual telescope
+with all the controls preset to your own
+preferences.
+</p>
+
+<form method="post" action="/cgi-bin/Yourtel">
+
+<table class="controls">
+<tr>
+<th>
+          <a href="help/telcontrols.html#AimPoint">Aim Point</a></th>
+<td>
+    <table class="where">
+    <tr>
+    <td>
+    <a href="help/telcontrols.html#RightAscension">Right Ascension</a>:</td>
+    <td>
+    <input type="hidden" name="z" value="1" />
+    <input type="text" name="lon" value="0h" size="15" /></td>
+    </tr>
+
+    <tr>
+    <td>
+    <a href="help/telcontrols.html#Declination">Declination</a>:</td>
+    <td>
+    <input type="text" name="lat" value="0°" size="15" /></td>
+    <td>
+    <label><input type="radio" name="ns" checked="checked" value="North" /> North</label>
+    <label><input type="radio" name="ns" value="South" /> South</label>
+    </td>
+    </tr>
+
+    <tr>
+    <td colspan="3" class="catalogue">
+    <a href="catalogues/catalogues.html"><b>Find object in catalogue</b></a>
+    </td></tr>
+
+    </table>
+</td></tr>
+</table>
+
+<p class="c">
+<input type="submit" value="Aim Virtual Telescope" />
+</p>
+
+</form>
+
+<h3 class="nav"><a href="help/help.html"><cite>Your Sky</cite> help</a></h3>
+<h3 class="nav"><a href="./">Up to <cite>Your Sky</cite></a></h3>
+
+<hr />
+
+<table class="footer">
+<tr>
+<td class="left">
+by <a href="/">John Walker</a>
+</td>
+<td class="right">
+    <table class="buttons">
+    <tr><td>
+        <a class="i" href="http://validator.w3.org/check?uri=http://www.fourmilab.ch/yoursky/yourtel.html"
+           rel="Target:FourmilabValidation"><img
+           class="button"
+           src="/images/icons/valid-xhtml10.png"
+           alt="Valid XHTML 1.0" height="31" width="88" /></a>
+    </td></tr>
+    </table>
+</td>
+</tr>
+</table>
+
+</body>
+</html>

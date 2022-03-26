@@ -1,0 +1,3 @@
+DB    ../dat/dast5_le.dat
+DB    ../dat/dcom5_le.dat
+INDEX ../dat/dastcom.idx

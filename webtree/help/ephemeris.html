@@ -1,0 +1,173 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+<title>
+Your Sky Help: Ephemeris
+</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<link rel="stylesheet" href="../yoursky.css" type="text/css" />
+</head>
+
+<body>
+<h1><img src="images/helplogo.jpg" width="128" height="128" align="middle" alt="" /> <cite>Your Sky</cite> Help: Ephemeris</h1> &nbsp;
+<hr />
+
+<p />
+<form method="post" action="/cgi-bin/Yoursky">
+
+<!--  Hidden fields provide canned values that reproduce the
+      sample ephemeris given below. -->
+
+<input type="hidden" name="date" value="1" />
+<input type="hidden" name="utc" value="1995/03/01 00:00" />
+
+<input type="hidden" name="lat" value="47°" />
+<input type="hidden" name="ns" value="North" />
+<input type="hidden" name="ns" checked="checked" value="South" />
+<input type="hidden" name="lon" value="7°" />
+<input type="hidden" name="ew" checked="checked" value="East" />
+<input type="hidden" name="ew" value="West" />
+<input type="hidden" name="coords" value="y" />
+<input type="hidden" checked="checked" name="moonp" />
+<input type="hidden" checked="checked" name="deep" />
+<input type="hidden" name="deepm" value="2.5" />
+<input type="hidden" name="consto" value="y" />
+<input type="hidden" name="constn" value="y" />
+<input type="hidden" name="constb" value="y" />
+<input type="hidden" name="limag" value="5.5" />
+<input type="hidden" checked="checked" name="starn" />
+<input type="hidden" name="starnm" value="2.0" />
+<input type="hidden" checked="checked" name="starb" />
+<input type="hidden" name="starbm" value="2.5" />
+
+<p />
+
+<center>
+<table border="border" cellpadding="3" bgcolor="#D0D0D0">
+<tr><th rowspan="2">&nbsp;</th> <th rowspan="2">Right<br /> Ascension</th> <th rowspan="2">Declination</th> <th rowspan="2">Distance<br /> (AU)</th> <th colspan="2">From 47°S 7°E:</th></tr>
+<tr><th>Altitude</th> <th>Azimuth</th></tr>
+<tr><th>Sun</th> <td align="right">22h 45m 51s</td> <td align="right">&minus;7° 50.8'</td> <td align="right">0.991</td> <td align="right">&minus;35.046</td> <td align="right">&minus;4.678</td> <td>Set</td></tr>
+<tr><th>Mercury</th> <td align="right">21h 1m 44s</td> <td align="right">&minus;17° 5.4'</td> <td align="right">0.947</td> <td align="right">&minus;20.502</td> <td align="right">&minus;30.571</td> <td>Set</td></tr>
+<tr><th>Venus</th> <td align="right">19h 58m 25s</td> <td align="right">&minus;19° 35.1'</td> <td align="right">1.019</td> <td align="right">&minus;11.737</td> <td align="right">&minus;43.547</td> <td>Set</td></tr>
+<tr><th>Moon</th> <td align="right">22h 16m 10s</td> <td align="right">&minus;5° 52.8'</td> <td align="right">59.9 ER</td> <td align="right">&minus;36.184</td> <td align="right">&minus;13.954</td> <td>Set</td></tr>
+<tr><th>Mars</th> <td align="right">9h 22m 17s</td> <td align="right">+19° 52.9'</td> <td align="right">0.709</td> <td align="right">19.492</td> <td align="right">155.307</td> <td>Up</td></tr>
+<tr><th>Jupiter</th> <td align="right">16h 50m 26s</td> <td align="right">&minus;21° 40.7'</td> <td align="right">5.342</td> <td align="right">17.470</td> <td align="right">&minus;76.684</td> <td>Up</td></tr>
+<tr><th>Saturn</th> <td align="right">23h 5m 13s</td> <td align="right">&minus;7° 46.1'</td> <td align="right">10.652</td> <td align="right">&minus;35.225</td> <td align="right">1.185</td> <td>Set</td></tr>
+<tr><th>Uranus</th> <td align="right">20h 4m 6s</td> <td align="right">&minus;20° 53.8'</td> <td align="right">20.436</td> <td align="right">&minus;11.252</td> <td align="right">&minus;41.702</td> <td>Set</td></tr>
+<tr><th>Neptune</th> <td align="right">19h 45m 55s</td> <td align="right">&minus;20° 39.2'</td> <td align="right">30.861</td> <td align="right">&minus;9.324</td> <td align="right">&minus;45.560</td> <td>Set</td></tr>
+<tr><th>Pluto</th> <td align="right">16h 5m 23s</td> <td align="right">&minus;6° 54.5'</td> <td align="right">29.652</td> <td align="right">14.568</td> <td align="right">&minus;95.535</td> <td>Up</td></tr>
+<tr><th>1995 DW1</th> <td align="right">12h 5m 24s</td> <td align="right">+2° 58.7'</td> <td align="right">0.456</td> <td align="right">38.069</td> <td align="right">&minus;159.504</td> <td>Up</td></tr>
+</table>
+</center>
+
+<p>
+The ephemeris shows you the positions of the principal bodies in the
+Solar System at the <a href="controls.html#DateTime">selected time</a>, both in
+celestial coordinates, and as seen from your specified
+observing site for sky and horizon maps.
+If you're tracking an
+asteroid or comet by specifying its <a href="elements.html">orbital
+elements</a>, its position is given at the foot of the table.  The
+sample ephemeris above gives positions for 00:00 UTC on March 1,
+1995, while tracking the Earth-orbit-crossing asteroid 1995 DW1, whose
+discovery (on February 25, 1995) was reported in Minor Planet
+Electronic Circular 1995-E02 of 00:15 UTC, March 1, 1995, giving
+the orbital elements shown at the end of this page.
+</p>
+
+<p>
+For each solar system body the following data are displayed:
+The first three items give the equatorial celestial coordinates of the
+object at the specified time, and its distance from the Earth.  These
+values are independent of the observing site.
+</p>
+
+<dl class="j">
+<dt><b>Right ascension</b></dt>
+        <dd>Hour angle at Greenwich.</dd>
+<dt><b>Declination</b></dt>
+        <dd>Declination with regard to the equator.</dd>
+<dt><b>Distance (AU)</b></dt>
+        <dd>Distance from the Earth in astronomical units (the Moon's 
+            distance is given in units of the Earth's radius).</dd>
+</dl>
+
+<p>
+The next three columns give the location of the object in the sky at
+the specified observing site.  They are not included in displays
+from the <a href="../#Telescope">Virtual Telescope</a>, which
+uses celestial coordinates exclusively.
+</p>
+
+<dl class="j">
+<dt><b>Altitude</b></dt>
+       <dd>Altitude of the body above the horizon, in degrees at the 
+           observing site.  If negative, the body is below the horizon (&ldquo;set&rdquo;) 
+           and hence invisible.</dd>
+<dt><b>Azimuth</b></dt>
+        <dd>Local compass bearing to the object at the observing site.
+            Astronomers measure azimuth from the South 
+            (consistent with the convention for hour angle), with positive 
+            angles toward the West and negative angles toward the East.</dd>
+<dt><b>Visibility</b></dt>
+        <dd>This column interprets the Altitude and Azimuth to describe what 
+            you can expect to see.  Objects below the apparent horizon 
+            (taking account of the refraction of the atmosphere and the finite 
+            angular size of the Sun and Moon but not altitude of the observer) 
+            are shown as &ldquo;Set&rdquo; while objects clearly visible in the sky (or 
+            visible if the Sun weren't also up) are shown as &ldquo;Up&rdquo;.  Objects 
+            that are just appearing or disappearing on the horizon are shown 
+            as &ldquo;Rising&rdquo; or &ldquo;Setting&rdquo;, and objects at culmination (crossing the 
+            local meridian) are shown as being in &ldquo;Transit&rdquo;.  Transit times are 
+            quite accurate, but rising and setting times can be given only 
+            approximately because the altitude of the observer, local 
+            topography along the horizon, and the effects of atmospheric 
+            refraction (which, in turn, vary based upon temperature and 
+            barometric pressure) have a major influence upon when you will 
+            actually see an object appear or disappear at the horizon.</dd>
+</dl>
+
+<p />
+Press the
+<input type="submit" value=" Update " style="background-color: #C0C0FF;" />
+button to reproduce the sample ephemeris above, using the following
+orbital elements for asteroid 1995 DW1:<br />
+<textarea class="elements" name="elements" rows="7" cols="70">
+1995 DW1
+Epoch 1995 Feb. 12.0 TT = JDT 2449760.5                 Marsden
+M 240.56097              (2000.0)            P               Q
+n   0.87220579     Peri.  325.86185     +0.71396325     +0.69743383
+a   1.0849009      Node   349.21340     -0.54541801     +0.49845325
+e   0.5139556      Incl.   19.34279     -0.43906227     +0.51490816
+P   1.13           H    20.5          G   0.15
+</textarea>
+</form>
+
+<p />
+
+<a href="../"><b>Return to <cite>Your Sky</cite></b></a>
+&nbsp;&nbsp;<a href="help.html"><b>Other Help</b></a>
+<hr />
+
+<table class="footer">
+<tr>
+<td class="left">
+by <a href="/">John Walker</a>
+</td>
+<td class="right">
+    <table class="buttons">
+    <tr><td>
+	<a class="i" href="http://validator.w3.org/check?uri=http://www.fourmilab.ch/yoursky/help/ephemeris.html"
+	   target="FourmilabValidation"><img
+	   class="button"
+	   src="/images/icons/valid-xhtml10.png"
+	   alt="Valid XHTML 1.0" height="31" width="88" /></a>
+    </td></tr>
+    </table>
+</td>
+</tr>
+</table>
+
+</body>
+</html>

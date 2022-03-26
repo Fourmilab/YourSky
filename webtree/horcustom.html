@@ -1,0 +1,341 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+<title>
+Your Sky: Horizon View Custom Settings
+</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<link rel="stylesheet" href="yoursky.css" type="text/css" />
+<link rel="stylesheet" href="controls.css" type="text/css" />
+<meta name="keywords" content="your, sky, custom, request, horizon, asteroid, comet" />
+<meta name="description" content="Your Sky: Horizon View Custom Request" />
+<meta name="author" content="John Walker" />
+<meta name="robots" content="index" />
+<script src="/documents/scripts/externalLinks.js"
+    type="text/javascript">
+</script>
+<script src="/cgi-bin/Where"
+    type="text/javascript">
+</script>
+<script type="text/javascript">
+//<![CDATA[
+    /*  If we were able to obtain geolocation information from
+        the requester's IP address, plug the latitude and
+        longitude into the Observing Site fields of the Sky Map
+        and Horizon Views request forms, taking care to set the
+        radio button according to the sign of the co-ordinates.
+
+        Sign conventions for co-ordinates:
+            Latitude    + North     - South
+            Longitude   + East      - West
+    */
+    function plugLocation() {
+        if (geoLocation && geoLocation.status) {
+            document.getElementById("lat").value =
+                Math.abs(geoLocation.latitude) + "\xB0";
+            document.getElementById(geoLocation.latitude > 0 ?
+                "skynsn" : "skynss").checked = true;
+            document.getElementById("lon").value =
+                Math.abs(geoLocation.longitude) + "\xB0";
+            document.getElementById(geoLocation.longitude > 0 ?
+                "skyewe" : "skyeww").checked = true;
+        }
+    }
+//]]>
+</script>
+</head>
+
+<body onload="externalLinks(); plugLocation();">
+<h1><cite>Your Sky</cite>: Horizon View Custom Settings</h1>
+<hr />
+
+<p>
+By filling out the form below (presented in the same form as the
+<cite>Your Sky</cite> Horizon View control panel) you can make a custom
+request with parameters preset.  Then, after pressing the
+&ldquo;Update&rdquo; button to display the requested image, you can
+save the result on your &ldquo;Hotlist&rdquo; or
+&ldquo;Bookmark&rdquo; (or whatever your browser calls it).  Then you
+can immediately show a custom horizon view just by selecting that
+item.
+</p>
+
+<p>
+If you're not happy with the result when you press
+&ldquo;Update&rdquo;, come back to this page by pressing
+&ldquo;Back&rdquo; and adjust the parameters until you obtain the
+desired result, then save the request in your browser's hotlist or
+bookmark table.  Each item in the following request form is linked to
+its description in the <a href="help/controls.html">help file</a> for
+the control panel.
+</p>
+
+<form method="get" id="request" action="/cgi-bin/Yourhorizon">
+
+<p class="c">
+<input type="submit" value="Update" />
+</p>
+
+<p>
+<a href="help/horcontrols.html"><em>Explain controls in the
+    following panel.</em></a>
+</p>
+
+<table class="controls">
+
+<tr>
+<th>
+     <a href="help/horcontrols.html#DateTime"><b>Date and Time</b></a></th>
+<td>
+<table class="settings">
+<tr>
+<td>
+<input type="radio" name="date" onclick="0" checked="checked"
+    value="0" /> <a href="help/horcontrols.html#Now">Now</a>
+</td>
+</tr>
+<tr>
+<td>
+<input type="radio" name="date" onclick="0"
+    value="1" /> <a href="help/horcontrols.html#UTC">Universal time:</a>
+</td>
+<td>
+<input type="text" name="utc" value="1998/02/14 20:55:01"
+    size="20" onchange="form.date[1].checked=true;" />
+</td>
+</tr>
+<tr>
+<td>
+<input type="radio" name="date" onclick="0"
+    value="2" /> <a href="help/horcontrols.html#Julian">Julian day:</a>
+</td>
+<td>
+<input type="text" name="jd" value="2450859.37154"
+    size="20" onchange="form.date[2].checked=true;" />
+</td>
+</tr>
+</table>
+
+</td>
+</tr>
+
+<tr>
+<th>
+          <a href="help/horcontrols.html#ViewPoint">Viewpoint</a></th>
+<td>
+<table class="settings">
+<tr>
+<td>
+<a href="help/horcontrols.html#Azimuth">Azimuth</a>:
+</td>
+<td>
+<select name="azimuth" size="1"
+    onchange="if (form.azimuth.selectedIndex != 0) { form.azideg.value = (45 * (form.azimuth.selectedIndex - 1)); }">
+<option value="V" selected="selected">Degrees:</option>
+<option value="0">North</option>
+<option value="45">Northeast</option>
+<option value="90">East</option>
+<option value="135">Southeast</option>
+<option value="180">South</option>
+<option value="225">Southwest</option>
+<option value="270">West</option>
+<option value="315">Northwest</option>
+</select>
+<input type="text" name="azideg" value="0° (N)" size="15" />
+</td>
+</tr>
+<tr>
+<td>
+<a href="help/horcontrols.html#FieldOfView">Field of view</a>:
+</td>
+<td>
+<input type="text" name="fov" value="45°" size="10" />
+</td>
+</tr>
+</table>
+
+</td>
+</tr>
+
+<tr>
+<th>
+          <a href="help/controls.html#Site">Observing Site</a></th>
+<td>
+<table class="settings">
+<tr>
+<td>
+<label for="lat">Latitude:</label>
+</td>
+<td>
+<input type="text" name="lat" id="lat" value="47°" size="10" />
+</td>
+<td>
+<label><input type="radio" id="skynsn" name="ns"
+    checked="checked" value="North" /> North</label>
+<label><input type="radio" id="skynss" name="ns"
+    value="South" /> South</label>
+</td>
+</tr>
+<tr>
+<td>
+<label for="lon">Longitude:</label>
+</td>
+<td>
+<input type="text" name="lon" id="lon" value="7°" size="10" />
+</td>
+<td>
+<label><input type="radio" id="skyewe" name="ew"
+    checked="checked" value="East" /> East</label>
+<label><input type="radio" id="skyeww" name="ew"
+    value="West" /> West</label>
+</td>
+</tr>
+
+</table>
+
+</td>
+</tr>
+
+<tr>
+     <th><a href="help/horcontrols.html#Options">Display Options</a></th>
+<td>
+<input type="checkbox" checked="checked" name="coords" /> <a href="help/horcontrols.html#Coords">Ecliptic and equator</a>
+
+<br />
+<input type="checkbox" checked="checked" name="moonp" /> <a href="help/horcontrols.html#Planets">Moon and planets</a>
+
+<br />
+<input type="checkbox" checked="checked" name="deep" />  <a href="help/horcontrols.html#DeepSky">Deep sky objects of magnitude</a>
+ <input type="text" name="deepm" value="3.0" size="3" /> and brighter
+
+<br />
+ <a href="help/horcontrols.html#Constellations">Constellations:</a>
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" checked="checked" name="consto" /> <a href="help/horcontrols.html#ConstO">Outlines</a>
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" checked="checked" name="constn" /> <a href="help/horcontrols.html#ConstN">Names</a>
+<label><input type="checkbox" name="consts" /> abbreviate?</label>
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" checked="checked" name="constb" /> <a href="help/horcontrols.html#ConstB">Boundaries</a>
+
+<br />
+<a href="help/horcontrols.html#Stars">Stars:</a>
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="help/horcontrols.html#StarMag">Show stars brighter than magnitude</a> <input type="text" name="limag" value="5.5" size="5" />
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" checked="checked" name="starn" /> <a href="help/horcontrols.html#StarName">Names for magnitude</a>
+ <input type="text" name="starnm" value="3.0" size="5" /> and brighter
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" checked="checked" name="starb" /> <a href="help/horcontrols.html#StarBFlam">Bayer/Flamsteed codes</a> for mag.
+ <input type="text" name="starbm" value="3.5" size="5" /> and brighter
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="showm" /> <a href="help/horcontrols.html#StarShowM">Show magnitudes</a> between
+ <input type="text" name="showmb" value="-1.5" size="5" /> and <input type="text" name="showmd" value="6.0" size="5" />
+
+<br /><input type="checkbox" checked="checked" name="terrain" /> <a href="help/horcontrols.html#Terrain">Terrain at horizon</a> &nbsp;&nbsp; <a href="help/horcontrols.html#Terrough">Roughness:</a>
+            <input type="text" name="terrough" value="0.7" size="5" />
+            &nbsp;&nbsp; <input type="checkbox" checked="checked" name="scenery" /> <a href="help/horcontrols.html#Scenery"> with scenery</a>
+
+<br /><a href="help/horcontrols.html#Imgsize">Image size</a>: <input type="text" name="imgsize" value="512" size="6" /> pixels
+&nbsp;
+<input type="checkbox" name="dynimg" value="y" />&nbsp;<a href="#dynreq">Dynamic image request</a>
+
+<br /><a href="/yoursky/help/horcontrols.html#Fontscale">Font scale</a>: <input type="text" name="fontscale" value="1.0" size="4" />
+
+<br /><a href="help/horcontrols.html#Scheme">Colour scheme</a>: <select name="scheme" size="1">
+<option value="0" selected="selected">Colour</option>
+<option value="1">Black on white background</option>
+<option value="2">White on black background</option>
+<option value="3">Night vision (red)</option>
+</select>
+</td>
+</tr>
+
+<tr>
+   <th><a href="help/elements.html">Asteroid and<br />Comet Tracking</a></th>
+<td align="center">
+<br />
+Paste <a href="help/elements.html">orbital elements</a> below:
+  <label><input type="checkbox" name="edump" value="-xe" /> Echo elements</label>
+<br />
+<textarea class="elements" name="elements" rows="9" cols="40">
+</textarea><br />
+</td>
+</tr>
+</table>
+
+</form>
+
+<h2><a name="dynreq">Dynamic Image Requests</a></h2>
+
+<p>
+Normally, <cite>Your Sky</cite> generates an HTML page containing the
+requested view as an embedded image along with a control panel showing
+the parameters used to produce the image and permitting further
+requests.  Suppose, instead, you wish to embed a custom image from
+<cite>Your Sky</cite> in a Web page of your own.  To include custom,
+up-to-date images in a Web page, first use the form above to compose a
+<cite>Dynamic image request</cite> with the desired parameters.  Enter
+the specifics of the image you require in the form, then press
+&ldquo;Update&rdquo; to preview the image. If you wish to further
+refine the image, return to this page with your browser's
+&ldquo;Back&rdquo; button (<em>do not</em> use the
+&ldquo;Update&rdquo; button in the result page, as that won't update
+the fields in the custom request), adjust the parameters, and repeat
+until you obtain the image you're looking for.
+</p>
+
+<p>
+Then, return once again to this form with the &ldquo;Back&rdquo;
+button, check the &ldquo;Dynamic image request&rdquo; box, then press
+the &ldquo;Update&rdquo; button.  You should obtain a page showing
+<em>just</em> the image, without the usual HTML page and control
+panel.  More importantly, the URL or Address field in your browser's
+control panel will show a request which will reproduce the image on
+demand.  You can copy the contents of this field and paste it into an
+<tt>&lt;img&gt;</tt> tag in your page to embed the requested image
+therein.
+</p>
+
+<p>
+The request is <em>dynamic</em> in the sense that every time your page
+is displayed, <cite>Your Sky</cite> will supply an up-to-date image
+with the given parameters.  (Obviously, this applies only if the
+&ldquo;Now&rdquo; box is checked in the <b>Date and Time</b> section
+of the form.  If you specify a specific date and time, the image will
+be dynamically generated but invariant.  If you prefer such an image,
+it's kinder on <cite>Your Sky</cite> and the Internet, not to mention
+much faster for visitors to your page, to simply save the image on
+your computer and embed it in your Web page as a regular local image.)
+</p>
+
+<p>
+<a href="./#Horizon"><b>Back to <cite>Horizon Views</cite></b></a>
+&nbsp; &nbsp; <a href="./"><b>Up to <cite>Your Sky</cite></b></a>
+&nbsp; &nbsp; <a href="help/help.html"><b>Help</b></a>
+</p>
+
+<hr />
+
+<table class="footer">
+<tr>
+<td class="left">
+by <a href="/">John Walker</a>
+</td>
+<td class="right">
+    <table class="buttons">
+    <tr><td>
+        <a class="i" href="http://validator.w3.org/check?uri=http://www.fourmilab.ch/yoursky/horcustom.html"
+           rel="Target:FourmilabValidation"><img
+           class="button"
+           src="/images/icons/valid-xhtml10.png"
+           alt="Valid XHTML 1.0" height="31" width="88" /></a>
+    </td></tr>
+    </table>
+</td>
+</tr>
+</table>
+
+</body>
+</html>

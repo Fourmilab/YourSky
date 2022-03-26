@@ -1,0 +1,38 @@
+    table.controls {
+        background-color: #D0D0D0;
+        border: 3px double grey;
+        border-collapse: collapse;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    table.controls tr th,td {
+        border: 3px double grey;
+    }
+
+    table.controls th {
+        padding-left: 5px;
+        padding-right: 5px;
+    }
+
+    table.controls th.vpoint {
+        border-top: 3px double grey;
+    }
+
+    table.controls table.where {
+        padding: 3px;
+        border: none;
+    }
+
+    table.controls table.where td, th {
+        border: none;
+    }
+
+    table.controls table.settings td {
+        border: none;
+        padding: 3px;
+    }
+
+    table.where td.catalogue {
+        text-align: center;
+    }

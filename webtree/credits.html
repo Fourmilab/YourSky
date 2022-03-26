@@ -1,0 +1,167 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+<title>Your Sky: Credits</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<link rel="stylesheet" href="yoursky.css" type="text/css" />
+<meta name="keywords" content="your, sky, credits, sky, map" />
+<meta name="description" content="Your Sky: Credits" />
+<meta name="author" content="John Walker" />
+<meta name="robots" content="index" />
+<script src="/documents/scripts/externalLinks.js"
+    type="text/javascript">
+</script>
+</head>
+
+<body>
+<h1>
+<img src="figures/credits.png" style="vertical-align: middle;"
+     width="58" height="72" alt="" /> &nbsp; <cite>Your Sky</cite>: Credits
+</h1>
+<hr />
+
+<p>
+<cite>Your Sky</cite> was implemented by <a href="/">John
+Walker</a> in January and February of 1998.  The calculation and display
+software was adapted from <a href="/homeplanet/homeplanet.html">Home
+Planet</a> for Windows.
+</p>
+
+<p>
+The GIF output file generation is based upon the <code>ppmtogif</code>
+module of <a href="http://www.acme.com/jef/" rel="Target:Yoursky_Aux">Jef Poskanzer</a>'s
+<code>pbmplus</code> toolkit, of which many
+other components were used in creating the images you see here.
+</p>
+
+<pre>
+   ppmtogif.c - read a portable pixmap and produce a GIF file
+  
+   Based on GIFENCOD by David Rowley [mgardi@watdscu.waterloo.edu].
+   Lempel-Zim compression based on "compress".
+  
+   Modified by Marcel Wijkstra [wijkstra@fwi.uva.nl]
+  
+   Copyright © 1989 by Jef Poskanzer.
+  
+   Permission to use, copy, modify, and distribute this software and its
+   documentation for any purpose and without fee is hereby granted, provided
+   that the above copyright notice appear in all copies and that both that
+   copyright notice and this permission notice appear in supporting
+   documentation.  This software is provided "as is" without express or
+   implied warranty.
+  
+   The Graphics Interchange Format© is the Copyright property of
+   CompuServe Incorporated.  GIF(sm) is a Service Mark property of
+   CompuServe Incorporated.
+</pre>
+
+<p>
+<a href="http://www.midwinter.com/~koreth/" rel="Target:Yoursky_Aux">Steven Grimm</a>'s
+<a href="http://www.midwinter.com/~koreth/uncgi.html" rel="Target:Yoursky_Aux"><code>uncgi</code></a>
+made the task of processing form arguments in the server immeasurably
+easier.
+<br class="cb" />
+</p>
+
+
+<p style="margin-bottom: 0px;">
+<a name="astralg">
+The algorithms to calculate the positions of the Moon, planets,
+asteroids, and comets are given in:
+</a>
+</p>
+<blockquote style="margin-top: 0px;">
+<p>
+    Meeus, Jean.
+<cite>
+<a href="http://www.amazon.com/exec/obidos/ASIN/0943396611/fourmilabwwwfour" rel="Target:Yoursky_Aux">
+Astronomical Algorithms
+</a>
+</cite>.  Richmond: Willmann-Bell,
+1998.  ISBN 0-943396-63-8.
+</p>
+</blockquote>
+
+<p>
+Stars in <a href="./#Skymap">full-sky maps</a>
+and <a href="./#Horizon">horizon views</a>
+are plotted using &ldquo;The Bright Star Catalogue, 5th Revised
+Edition&rdquo; [Yale: Hoffleit &amp; Warren 1991], which contains position,
+magnitude, spectral type, and proper motion data for 9096 stars
+brighter than magnitude 6.5.  It is the most widely used digital star
+database, since it includes comprehensive information for all naked
+eye stars.  The master versions of this catalogue is
+distributed on the
+<a href="http://www.nasa.gov/" rel="Target:Yoursky_Aux">NASA</a>
+<a href="http://adc.gsfc.nasa.gov/" rel="Target:Yoursky_Aux">Astronomical Data Center</a>
+CD-ROM, were specially
+processed for use in <cite>Your Sky</cite>, annotating them with star names, Bayer
+letters and Flamsteed numbers, and other information.
+You can obtain copies of this and other astronomical catalogues
+from the Astronomical Data Center's
+<a href="http://adc.gsfc.nasa.gov/adc/adc_collections.html" rel="Target:Yoursky_Aux">Archives</a>.
+</p>
+
+<p>
+The <a href="./#Telescope"><cite>Virtual Telescope</cite></a> uses the
+definitive Smithsonian Astrophysical Observatory Star Catalogue [SAO:
+1966], updated to epoch J2000.0 and corrected by Roman and Warren in
+1990.  The SAO catalogue is the fundamental professional astrometric
+reference: it lists more than a quarter of a million stars, providing
+position, visual and photographic magnitude, proper motion,
+spectrographic information, and a wealth of other data.  The SAO
+catalogue contains stars as faint as twelfth magnitude, but is
+generally considered to have a limiting magnitude (the point at which
+as many stars are missed as are included) of about 9.5.  The master
+versions of these primary references, distributed on the <a href="http://adc.gsfc.nasa.gov/" rel="Target:Yoursky_Aux">Astronomical
+Data Center</a> CD-ROM, were specially processed for use in <cite>Your Sky</cite>,
+annotating them with star names, Bayer letters and Flamsteed numbers,
+and other information.  Visit the Astronomical Data Center's
+<a href="http://adc.gsfc.nasa.gov/adc/adc_collections.html" rel="Target:Yoursky_Aux">Archives</a>
+for your own copy of this database.
+</p>
+
+<p>
+The image used in the help
+logo was synthesised using the &ldquo;<tt>noao/artdata</tt>&rdquo; artificial
+star field generator module of
+the <a href="http://www.noao.edu/" rel="Target:Yoursky_Aux">National Optical Astronomy Observatories'</a>
+<a href="http://iraf.noao.edu/" rel="Target:Yoursky_Aux">IRAF</a> system.  IRAF is an
+extremely powerful professional image analysis and processing program,
+and it's free.  To generate your own custom star fields and planets,
+check out our
+<a href="/terranova/planetmaker/"><cite>Terranova</cite> Planet Maker</a>.
+The shadow was added using the
+<a href="/">Fourmilab</a> <a href="/webtools/shadow/">Shadow Server</a>.
+</p>
+
+<p>
+<a href="./"><b>Back to <cite>Your Sky</cite></b></a>
+&nbsp; &nbsp; <a href="help/help.html"><b>Help</b></a>
+</p>
+
+<hr />
+
+<table class="footer">
+<tr>
+<td class="left">
+by <a href="/">John Walker</a>
+</td>
+<td class="right">
+    <table class="buttons">
+    <tr><td>
+	<a class="i" href="http://validator.w3.org/check?uri=http://www.fourmilab.ch/yoursky/credits.html"
+	   rel="Target:FourmilabValidation"><img
+	   class="button"
+	   src="/images/icons/valid-xhtml10.png"
+	   alt="Valid XHTML 1.0" height="31" width="88" /></a>
+    </td></tr>
+    </table>
+</td>
+</tr>
+</table>
+
+</body>
+</html>

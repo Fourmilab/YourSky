@@ -1,0 +1,102 @@
+2003 April 7
+
+Changed delimiters in the UTC date field to "-" for ISO-8601
+compliance.
+
+Loosened up checking for delimiters when parsing the UTC
+field to accept any delimiter between date and time fields.
+A space is still required between the date and time.
+
+Loosened up parsing of latitude and longitude for the observing
+site to accept a space as a delimiter between degrees and
+minutes.
+
+2003 April 8
+
+Loosened up parsing of right ascension fields in the telescope
+aim point to permit any delimiter after the hours field.
+
+2003 April 21
+
+Changed the "install" target to "mv" both executables into the
+new /vitesse/server/cgi-executables directory.  The icons are
+no longer installed automatically by "make install".
+
+If CACHE_WARNING is defined, a big HTML comment screed is now
+included before the "<img src="> tag which includes the cached
+image in the HTML result document warning users who look at the
+source to figure out where the image is coming from not to link
+to it in the cache directory.
+
+The code which enforces the CPU time limit (to bail us out of
+loops caused by bad handling of malformed requests) fell afoul
+of the Protean signal handling in Solaris.  I changed the "signal"
+call to "sigset" and it seems to work now.  I also changed the
+time limit exceeded message to display in a red font.
+
+Added a "-" option specification which marks the end of the
+list of options identified by a leading "-" and changed the
+order of arguments supplied by the cgi-bin/Yourtel and
+cgi-bin/Yourhorizon scripts to supply a "-" before the
+numeric arguments to block attempts to spoof options.
+
+2005 January 7
+
+Commented out the fclose() of the output file in gifout.c.
+This was leading to a double close when vplanet.c closed
+the non-stdout output file.
+
+Rewrote TH() in vplanet.c to eliminate the modification
+of constant strings, which the GCC priesthood has deemed
+sinful.
+
+Added a definition of __USE_XOPEN_EXTENDED before the inclusion
+of <signal.h> in vplanet.c to avoid a warning from GCC.
+
+Cleaned up numerous GCC -Wall natters.  Braces were added to some
+logic in project.c to avoid so-called "ambiguous if-else" constructions.
+If something breaks in odd projections, compare this closely with
+the original.
+
+Terrain generation in horizon (-y option) mode was failing because
+of an assumption embedded in the initgauss() function of terrain.c
+that the maximum value returned by rand() obeyed the POSIX
+semantics, which is not the case with the GCC library.  I replaced
+the hard-coded limit with a reference to RAND_MAX, which should
+yield the correct value on all platforms.
+
+2005 April 20
+
+Fixed an off by 12 hours in the "-e2" option converting
+a specified Julian day to civil date.
+
+2005 June 27
+
+Added code to vplanet.c to constrain the telescope field of view to
+a maximum of 90 degrees (a full hemisphere).  Setting the field of
+view greater not only requires "eyes in the back of your head",
+yielding ridiculous plots, but can run into problems in project.c,
+where runaway recursion in drawcurveline() causes the plot to take
+almost forever and contain bizarre lines off the edge.  If the user
+sets the field of view to a value greater than 90 degrees, not
+only will it be limited in the plot but also in the field in the
+control panel in the result document.
+
+2005 July 3
+
+Fixed a potential buffer overflow in importing orbital elements
+passed into an image generation by a di= argument.
+
+2006 January 8
+
+It was possible to hang yourtel and yourizon by specifying a UTC or
+Julian date extremely far in the future, which caused the call on
+kepler in sunpos to loop.  As this call is done at the end of option
+processing, before time limit enforcement began, this would
+permanently generate a CPU loop on the server.  I moved the time limit
+enforcement to start at the very top of main() in vplanet.c, even
+before option processing begins to prevent such disasters in the
+future, and restored the future date sanity checks for UTC and Julian
+"-e" option epoch specifications which were removed in a fit of
+idealism some time ago.  Any specification of a date greater than
+8000-01-01 will now be reset to an epoch of "Now".
